@@ -32,14 +32,15 @@ Route::prefix('password')->group(function () {
    Route::get('/email', [RestablecerContraseñaController::class, 'sendResetLinkEmail'])->name('password.email');
    Route::post('/reset',[RestablecerContraseñaController::class, 'resetPassword'])->name('password.update');
 });
-Route::prefix('usuarios')->group(function () {
-    Route::get('/',[RegistrarUserController::class,'index']);
-    Route::get('/create',[RegistrarUserController::class,'create']);
-    Route::post('/create',[RegistrarUserController::class,'store']);
-    Route::get('/{id}',[RegistrarUserController::class,'show']);
-    Route::post('/edit/{id}',[RegistrarUserController::class,'edit']);
-    Route::post('/update/{id}',[RegistrarUserController::class,'update']);
-    Route::post('/delete/{id}',[RegistrarUserController::class,'destroy']);
+
+Route::prefix('/register')->group(function () {
+    // RUTAS PARA EL CRUD USUARIOS
+    Route::get('/', [RegistrarUserController::class, 'create'])->name('register.create');
+    Route::get('/get', [RegistrarUserController::class, 'store'])->name('register.store');
+    Route::get('/{user}', [RegistrarUserController::class, 'show'])->name('register.show');
+    Route::get('/{user}/edit', [RegistrarUserController::class, 'edit'])->name('register.edit');
+    Route::put('/{user}', [RegistrarUserController::class, 'update'])->name('register.update');
+    Route::delete('/{user}', [RegistrarUserController::class, 'destroy'])->name('register.destroy');
 });
 
 

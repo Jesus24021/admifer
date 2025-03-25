@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function showLogin()
+    public function showloginForm()
     {
-        echo "Formulario login";
         return view('login');
     }
     public function login(Request $request){
